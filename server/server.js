@@ -1,6 +1,8 @@
-require('dotenv').config()
-const express = require('express');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
 const app = express();
+import * as db from "./db/index.js";
 
 //const morgan = require('morgan') 
 //morgan middleware
@@ -21,7 +23,9 @@ app.listen(port,() => {
 
 //Routes
 //Get all restaurants
-app.get('/api/v1/restaurants',(req,res) => {
+app.get('/api/v1/restaurants',async(req,res) => {
+    const results= await db.query("select * from restaurants");
+    console.log(results);
     res.status(200).json(
         {
         status: 'success',
@@ -73,3 +77,4 @@ app.delete('/api/v1/restaurants/:id',(req,res) => {
         status: "success",
     })
 });
+
