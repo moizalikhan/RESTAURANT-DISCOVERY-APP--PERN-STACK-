@@ -24,16 +24,18 @@ app.listen(port,() => {
 //Routes
 //Get all restaurants
 app.get('/api/v1/restaurants',async(req,res) => {
+    try{
     const results= await db.query("select * from restaurants");
     console.log(results);
     res.status(200).json(
         {
         status: 'success',
+        results: results.rows.length,
         Data: {
-            restaurant: ["shinwari","kfc"],
-        
-    },
+            restaurants:results.rows,
+        },
 });
+} catch(err){console.log(err);}    
 });
 
 //Get a individual restaurant
@@ -77,4 +79,3 @@ app.delete('/api/v1/restaurants/:id',(req,res) => {
         status: "success",
     })
 });
-
