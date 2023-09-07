@@ -22,6 +22,8 @@ app.listen(port,() => {
 });
 
 //Routes
+
+
 //Get all restaurants
 app.get('/api/v1/restaurants',async(req,res) => {
     try{
@@ -38,9 +40,11 @@ app.get('/api/v1/restaurants',async(req,res) => {
 } catch(err){console.log(err);}    
 });
 
+
+
 //Get a individual restaurant
 app.get('/api/v1/restaurants/:id',(req,res) => {
-    console.log(req.params);
+    console.log(req.params.id);
 
     res.status(200).json({
         status: "success",
@@ -49,6 +53,8 @@ app.get('/api/v1/restaurants/:id',(req,res) => {
         }
     })
 });
+
+
 
 //Create a restaurant
 app.post('/api/v1/restaurants/',(req,res) => {
@@ -61,6 +67,8 @@ app.post('/api/v1/restaurants/',(req,res) => {
     })
 });
 
+
+
 //Update a restaurant
 app.put('/api/v1/restaurants/:id',(req,res) => {
     console.log(req.body);
@@ -71,6 +79,8 @@ app.put('/api/v1/restaurants/:id',(req,res) => {
         }
     })
 });
+
+
 
 //Delete a restaurant
 app.delete('/api/v1/restaurants/:id',(req,res) => {
