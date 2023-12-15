@@ -28,7 +28,6 @@ app.listen(port,() => {
 app.get('/api/v1/restaurants',async(req,res) => {
     try{
     const results= await db.query("select * from restaurants");
-    console.log(results);
     res.status(200).json(
         {
         status: 'success',
@@ -45,7 +44,6 @@ app.get('/api/v1/restaurants',async(req,res) => {
 //Get a individual restaurant
 app.get('/api/v1/restaurants/:id',async(req,res) => {
     console.log(req.params.id);
-
     try
     {
         const results= await db.query(
